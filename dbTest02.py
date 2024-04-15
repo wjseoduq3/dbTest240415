@@ -14,6 +14,10 @@ dbConn = pymysql.connect(host='192.168.0.100', user='guest01', password='12345',
 sql = "INSERT INTO membertbl VALUES('lion', '김호랑', '인천 동구')"  #DB에 실행할 sql문 생성
 cur = dbConn.cursor()
 cur.execute(sql)  # 연결된 DB의 스키마에 지정된 sql문 실행
+# result = cur.execute(sql)이 성공적으로 수행되면
+# print(result) 하면 1이 출력됨 (insert, delete, update)
+# if result == 1:
+#     print('회원가입이 성공하였습니다.')
 
 # records = cur.fetchall()  # sql에서 실행된 select문의 결고를 받아서 records로 저장
 # print(records)  # 결과는 튜플로 옴
