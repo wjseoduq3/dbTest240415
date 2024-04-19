@@ -19,7 +19,7 @@ class MainWindow(QMainWindow, form_class):
         self.joinreset_btn.clicked.connect(self.join_reset)
         self.idcheck_btn.clicked.connect(self.idcheck)
     def member_join(self):  # 회원가입 이벤트 처리 함수
-        memberid = self.joinid_edit.text()  # 우저가 입력한 회원아이디 텍스트 가져오기
+        memberid = self.joinid_edit.text()  # 유저가 입력한 회원아이디 텍스트 가져오기
         memberpw = self.joinpw_edit.text()
         membername = self.joinname_edit.text()
         memberemail = self.joinemail_edit.text()
