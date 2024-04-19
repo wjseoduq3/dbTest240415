@@ -30,7 +30,7 @@ while True:
         cur.close()
         dbConn.commit()
 
-    if menuNum == "2":
+    elif menuNum == "2":
         memberID = input("1) 정보를 수정할 수정할 회원ID를 입력하세요: ")
         memberName = input("2) 수정할 회원이름을 입력하세요: ")
         memberAddress = input("3) 수정할 회원주소를 입력하세요: ")
@@ -48,7 +48,7 @@ while True:
         cur.close()
         dbConn.commit()
 
-    if menuNum == "3":
+    elif menuNum == "3":
         memberID = input("1) 탈퇴할 회원ID를 입력하세요: ")
 
         sql = f"DELETE FROM membertbl WHERE memberID = '{memberID}'"
@@ -60,6 +60,24 @@ while True:
             print("회원탈퇴에 성공하였습니다.")
         else:
             print("회원탈퇴 실패입니다.")
+
+        cur.close()
+        dbConn.commit()
+
+    elif menuNum == "4":
+        sql = f"SELECT * FROM membertbl"
+        cur = dbConn.cursor()
+        cur.execute(sql)
+        memberList = cur.fetchall()
+
+        print("************ 회원리스트 ****************")
+        for member in memberList:
+            print(member[0], end=" / ")
+            print(member[1], end=" / ")
+            print(member[2])
+
+        cur.close()
+        dbConn.commit()
 
     elif menuNum == "5":
         print("프로그램을 종료합니다. 안녕히 가세요")
