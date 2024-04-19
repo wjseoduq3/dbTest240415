@@ -6,7 +6,7 @@ import pymysql  # mysql과 연동시켜주는 라이브러리
 # 3) 데이터베이스가 설치된 컴퓨터 IP 주소:
 # 본인 컴퓨터: localhost
 # 교수용컴퓨터: 192.168.0.100
-# 4) 데이터베이스 스키마의 이름: ex-shopdb
+# 4) 데이터베이스 스키마의 이름: 예: shopdb
 
 #  커넥션 생성
 dbConn = pymysql.connect(host='192.168.0.100', user='guest01', password='12345', db='shopdbjdy')
@@ -19,7 +19,7 @@ cur.execute(sql)  # 연결된 DB의 스키마에 지정된 sql문 실행
 # if result == 1:
 #     print('회원가입이 성공하였습니다.')
 
-# records = cur.fetchall()  # sql에서 실행된 select문의 결고를 받아서 records로 저장
+# records = cur.fetchall()  # sql에서 실행된 select문의 결과를 받아서 records로 저장
 # print(records)  # 결과는 튜플로 옴
 # print(records[0])
 # print(records[0][1])
@@ -28,10 +28,10 @@ cur.execute(sql)  # 연결된 DB의 스키마에 지정된 sql문 실행
 #     print(member[1])
 
 
-# dbConn의 사용이 종로된 후에는  DB 닫아줘야 함
-# 먼저 cur닫고 다음에 dbConn 닫음
+# dbConn 사용이 종료된 후에는  DB 닫아줘야 함
+# 먼저 cur 닫고 다음에 dbConn 닫음
 cur.close()
-dbConn.commit()  # DB를 변화시킨후 커밋하고 닫아야 함
+dbConn.commit()  # DB를 변화시킨 후 커밋하고 닫아야 함
 dbConn.close()
 
 
