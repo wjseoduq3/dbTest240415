@@ -81,8 +81,6 @@ class MainWindow(QMainWindow, form_class):
             cur.close()
             dbConn.close()
 
-        print(sql)
-
 app = QApplication(sys.argv)
 win = MainWindow()
 win.show()
