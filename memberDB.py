@@ -5,7 +5,7 @@ dbConn = pymysql.connect(user='guest01', password='12345', host='192.168.0.100',
 while True:
     print("************ 회원관리 프로그램 ****************")
     print("1: 회원 가입")
-    print("2: 회원 비밀번호  수정")
+    print("2: 회원 정보  수정")
     print("3: 회원 탈퇴")
     print("4: 전체 회원목록 조회")
     print("5: 프로그램 종료")
@@ -16,9 +16,9 @@ while True:
         print("회원정보를 입력하세요")
         memberID = print("1) 회원ID를 입력하세요: ")
         memberName = print("2) 회원이름을 입력하세요: ")
-        address = print("3) 회원주소를 입력하세요: ")
+        memberAddress = print("3) 회원주소를 입력하세요: ")
 
-        sql = f"INSERT INTO membertbl VALUES('{memberID}', '{memberName}', {address})"
+        sql = f"INSERT INTO membertbl VALUES('{memberID}', '{memberName}', {memberAddress})"
         cur = dbConn.cursor()
         result = cur.execute(sql)
 
