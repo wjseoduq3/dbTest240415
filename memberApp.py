@@ -29,9 +29,11 @@ class MainWindow(QMainWindow, form_class):
             QMessageBox.warning(self, "정보입력오류", "입력정보중 누락된 부분이 있습니다. 다시 입력해주세요.")
         elif len(memberid) < 4 or len(memberid) >=15:
             QMessageBox.warning(self, "아이디길이오류", "아이디는 4자 이상 11자 이하이어야 합니다. 다시 입력해주세요.")
-
         elif len(memberpw) < 4 or len(memberid) >= 15:
             QMessageBox.warning(self, "비밀번호길이오류", "비밀번호는 4자 이상 11자 이하이어야 합니다. 다시 입력해주세요.")
+        elif self.idcheck() == 0:  # 가입불가
+            # QMessageBox.warning(self, "회원가입불가", "이미 가입된 아이디입니다.")
+            pass
 
         else:
             dbConn = pymysql.connect(user='guest01', password='12345', host='192.168.0.100', db='shopdbjdy')
@@ -56,6 +58,7 @@ class MainWindow(QMainWindow, form_class):
         self.joinemail_edit.clear()
         self.joinage_edit.clear()
 
+    # 문제 있음 - 체크 필요
     def idcheck(self):  # 기존 아이디 존재 여부 체크 함수
         if memberid == "":
             QMessageBox.warning(self, "아이디입력오류", "아이디는 필수입력사항입니다. 다시 입력해주세요.")
@@ -74,9 +77,11 @@ class MainWindow(QMainWindow, form_class):
             if result[0][0] == 1:
                 # 내용수정
                 QMessageBox.warning(self, "회원가입불가", "이미 가입된 아이디입니다.")
+                return 0
             else:
                 # 내용수정
                 QMessageBox.warning(self, "회원가입가능", "회원가입가능한 아이디입니다.")
+                return 1
 
             cur.close()
             dbConn.close()
