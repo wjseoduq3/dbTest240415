@@ -31,8 +31,7 @@ class MainWindow(QMainWindow, form_class):
         memberage = self.joinage_edit.text()
 
         if memberid == "" or memberpw == "" or membername == "" or memberemail == "" or memberage == "":
-            QMessageBox.warning(self, "정보입력오류",\n
-            "입력정보중 누락된 부분이 있습니다. 다시 입력해주세요.")
+            QMessageBox.warning(self, "정보입력오류", "입력정보중 누락된 부분이 있습니다. 다시 입력해주세요.")
         elif len(memberid) < 4 or len(memberid) >=15:
             QMessageBox.warning(self, "아이디길이오류", "아이디는 4자 이상 11자 이하이어야 합니다. 다시 입력해주세요.")
         elif len(memberpw) < 4 or len(memberid) >= 15:
